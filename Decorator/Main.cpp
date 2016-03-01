@@ -1,7 +1,7 @@
 /*
  * Main.cpp
  *
- *  Created on: 2016Äê2ÔÂ29ÈÕ
+ *  Created on: 2016/02/29
  *      Author: larry
  */
 #include <stdio.h>
