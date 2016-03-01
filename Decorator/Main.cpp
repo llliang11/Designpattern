@@ -11,7 +11,7 @@ class File
 public:
 	virtual void dataProcess(void *pOutData, int *outSize)
 	{
-		printf("file process data ...");
+		printf("file process data ...\n");
 	}
 };
 
@@ -40,7 +40,7 @@ public:
 	virtual void dataProcess(void *pOutData, int *outSize)
 	{
 		DataProcess::dataProcess(NULL, NULL);
-		printf("Demux process data ...");
+		printf("Demux process data ...\n");
 	}
 };
 
@@ -50,7 +50,7 @@ public:
 	virtual void dataProcess(void *pOutData, int *outSize)
 	{
 		DataProcess::dataProcess(NULL, NULL);
-		printf("Codec process data ...");
+		printf("Codec process data ...\n");
 	}
 };
 
@@ -60,7 +60,7 @@ public:
 	virtual void dataProcess(void *pOutData, int *outSize)
 	{
 		DataProcess::dataProcess(NULL, NULL);
-		printf("Sink process data ...");
+		printf("Sink process data ...\n");
 	}
 };
 
@@ -70,7 +70,7 @@ public:
 	virtual void dataProcess(void *pOutData, int *outSize)
 	{
 		DataProcess::dataProcess(NULL, NULL);
-		printf("Component process data ...");
+		printf("Component process data ...\n");
 	}
 };
 
@@ -81,9 +81,12 @@ int main(void)
 	Codec *h264 = new Codec();
 	Sink *imageSink = new Sink();
 
+	Component *com = new Component();
+
 	aviDemux->setProcessComponent(aviFile);
 	h264->setProcessComponent(aviDemux);
-	imageSink->setProcessComponent(h264);
+	com->setProcessComponent(h264);
+	imageSink->setProcessComponent(com);
 	imageSink->dataProcess(NULL, NULL);
 	return 0;
 }
